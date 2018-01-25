@@ -37,3 +37,63 @@ If you're feeling ambitious (again, totally optional though), don't stop there! 
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
+
+## Camera Calibration
+##### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
+The code for this section is available in lane finding folder 
+    1. calibration.py
+    2. undistortion.py
+
+Cameras introduces radial distortion and tangential distortions. Due to radial distortion straight lines appear curved and tangential distortion is because the camera angle is not parallel to image plane.
+I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image. Thus, objp is just a replicated array of coordinates, and objpoints will be appended with a copy of it every time I successfully detect all chessboard corners in a test image. imgpoints will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.
+Open cv provides few method which are helpful to compute distortion coefficients.
+I have used findChessboardCorners and drawChessboardCorners. These methods help to identify the corners and draw lines along the corners.
+If findChessboardCorners finds corners then object points which are 3D points and image points which are 2D points of the corners are captured.
+Using these object points and image points to calibrate the camera we get the coefficients to rectify distortion. calibrateCamera is used for this purpose.
+
+Below are few images with corners lines drawn
+![calibration11](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/chessboard_lines/calibration11.jpg)
+![calibration12](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/chessboard_lines/calibration12.jpg)
+![calibration14](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/chessboard_lines/calibration14.jpg)
+![calibration16](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/chessboard_lines/calibration16.jpg)
+![calibration2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/chessboard_lines/calibration2.jpg)
+![calibration3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/chessboard_lines/calibration3.jpg)
+
+
+
+## Pipeline (single images)
+#### 1. Provide an example of a distortion-corrected image.
+I have applied the distortion coefficients for the test_images
+
+The source code for test image undistortion is available at ./lanefinding/undistorted_test_images.py
+
+Below are the images showing undistortion for test images
+
+
+#### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+I have used below coordinates as source and destination points
+
+src_points = np.float32([[490, 482], [810, 482], [1250, 720], [40, 720]])
+dest_points = np.float32([[0, 0], [1280, 0], [1250, 720], [40, 720]])
+
+I would improve the code later to derive points programatically
+
+The code is available in ./lanefinding/birds_eye_view.py
+
+Below are the images after applying perspective transform
+
+
+
+#### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
+
+I have used S color space in HLS color space. s_thresh_min = 170 and s_thresh_max = 255 as threshold values in S color space
+Below are images showing different stages of binary threshold image creation
+
+
+#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+I have used the binary image created above to find the line pixels
+1. Identified peaks in histogram
+2. Identified non zero pixels in the histogram
+3. Used non zero indices to fit in a polynomial equation.
+4. Averaged the x intercept positions from 5 previous frames.
+Position of the vehicle
