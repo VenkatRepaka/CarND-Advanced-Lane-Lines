@@ -68,6 +68,14 @@ I have applied the distortion coefficients for the test_images
 The source code for test image undistortion is available at ./lanefinding/undistorted_test_images.py
 
 Below are the images showing undistortion for test images
+![straight_lines1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/staright_lines1.png)
+![straight_lines2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/staright_lines2.png)
+![test1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test1.png)
+![test2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test2.png)
+![test3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test3.png)
+![test4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test4.png)
+![test5](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test5.png)
+![test6](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test6.png)
 
 
 #### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
@@ -81,7 +89,14 @@ I would improve the code later to derive points programatically
 The code is available in ./lanefinding/birds_eye_view.py
 
 Below are the images after applying perspective transform
-
+![straight_lines1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/straight_lines1.png)
+![straight_lines2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/straight_lines2.png)
+![test1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test1.png)
+![test2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test2.png)
+![test3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test3.png)
+![test4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test4.png)
+![test5](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test5.png)
+![test6](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test6.png)
 
 
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
@@ -89,6 +104,14 @@ Below are the images after applying perspective transform
 I have used S color space in HLS color space. s_thresh_min = 170 and s_thresh_max = 255 as threshold values in S color space
 Below are images showing different stages of binary threshold image creation
 
+![straight_lines1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/straight_lines1.png)
+![straight_lines2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/straight_lines2.png)
+![test1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test1.png)
+![test2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test2.png)
+![test3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test3.png)
+![test4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test4.png)
+![test5](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test5.png)
+![test6](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test6.png)
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 I have used the binary image created above to find the line pixels
