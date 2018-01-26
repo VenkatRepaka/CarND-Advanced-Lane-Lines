@@ -81,8 +81,10 @@ Below are the images showing undistortion for test images
 #### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 I have used below coordinates as source and destination points
 
+```
 src_points = np.float32([[490, 482], [810, 482], [1250, 720], [40, 720]])
 dest_points = np.float32([[0, 0], [1280, 0], [1250, 720], [40, 720]])
+```
 
 I would improve the code later to derive points programatically
 
@@ -124,10 +126,16 @@ I have used the binary image created above to find the line pixels
 Position of the vehicle
 I have assumed the position of the car is centre of the image
 To find the distance from center of the lanes I have chosen the lowest points in the left and right lanes
-    ```car_position = binary_image.shape[1] / 2
+    ``` 
+    car_position = binary_image.shape[1] / 2
     lane_center_position = (left_line.allx[719] + right_line.allx[719]) / 2
-    center_dist = (car_position - lane_center_position) * xm_per_pix```
+    center_dist = (car_position - lane_center_position) * xm_per_pix
+    ```
 If the distance from centre is negative then the car is left to centre and if positive the the car is right to lane
 
 Below are positions in test images
+![fig1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_1.png)
+![fig2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_2.png)
+![fig3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_3.png)
+![fig4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_4.png)
 
