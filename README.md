@@ -134,6 +134,7 @@ To find the distance from center of the lanes I have chosen the lowest points in
 If the distance from centre is negative then the car is left to centre and if positive the the car is right to lane
 
 Below are positions in test images
+
 ![fig1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_1.png)
 ![fig2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_2.png)
 ![fig3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_3.png)
