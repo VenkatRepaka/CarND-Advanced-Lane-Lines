@@ -101,7 +101,9 @@ Below are the images after applying perspective transform
 
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
 
+I have used sobel thresholding
 I have used S color space in HLS color space. s_thresh_min = 170 and s_thresh_max = 255 as threshold values in S color space
+Combined the above images finding the pixels which are non zero
 Below are images showing different stages of binary threshold image creation
 
 ![straight_lines1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/straight_lines1.png)
@@ -120,3 +122,12 @@ I have used the binary image created above to find the line pixels
 3. Used non zero indices to fit in a polynomial equation.
 4. Averaged the x intercept positions from 5 previous frames.
 Position of the vehicle
+I have assumed the position of the car is centre of the image
+To find the distance from center of the lanes I have chosen the lowest points in the left and right lanes
+    car_position = binary_image.shape[1] / 2
+    lane_center_position = (left_line.allx[719] + right_line.allx[719]) / 2
+    center_dist = (car_position - lane_center_position) * xm_per_pix
+If the distance from centre is negative then the car is left to centre and if positive the the car is right to lane
+
+Below are positions in test images
+
