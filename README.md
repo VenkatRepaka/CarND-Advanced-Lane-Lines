@@ -146,7 +146,7 @@ The code used in the project is at [lane_finding_video_pipeline.py](https://gith
 
 To start with I have created smaller python files with minimal functionality and all the files are [here](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/tree/master/lanefinding)
 
-Almost all of the above code pieces are extract from this course and udacity forums. I need to explore few more techniques.
+Almost all of the above code pieces are exact extract from this course lessons and forums. I need to explore few more techniques from my side.
 
 #### Challenges
 1. Only S color space is not sufficient to create a threshold binary. Have to evaluate multiple color spaces.
