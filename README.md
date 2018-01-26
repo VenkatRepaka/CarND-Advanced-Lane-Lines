@@ -144,7 +144,11 @@ Here is the link to [project video](https://github.com/VenkatRepaka/CarND-Advanc
 
 The code used in the project is at [lane_finding_video_pipeline.py](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/lanefinding/lane_finding_video_pipeline.py)
 To start with I have created smaller python files with minimal functionality and all the files are [here](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/tree/master/lanefinding)
-#### Challenges
-1. 
+Almost all of the above code pieces are extract from this course and udacity forums. I need to explore few more techniques.
 
+#### Challenges
+1. Only S color space is not sufficient to create a threshold binary. Have to evaluate multiple color spaces.
+2. I have chosen fixed position to change perspective transform. This led to deviation of the found lines from the actual lines. We should be able to pin point the transformation points programatically
+3. I did not perform any smoothing techniques. Smoothing techniques will help at varying contrast and lighting conditions in the video
+4. Image resizing should help with speed of video transformation. I have used the same resolution.
 
