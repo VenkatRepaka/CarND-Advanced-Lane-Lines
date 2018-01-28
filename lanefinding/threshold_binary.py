@@ -114,7 +114,7 @@ def pipeline(image, img):
     ax1.imshow(img)
     ax1.set_title('Original Image', fontsize=30)
     ax2.imshow(combined, cmap='gray')
-    ax2.set_title('Combined Image', fontsize=30)
+    ax2.set_title('Sobel Threshold Image', fontsize=30)
     ax3.imshow(s_binary, cmap='gray')
     ax3.set_title('S binary', fontsize=30)
     ax4.imshow(combined_binary, cmap='gray')
