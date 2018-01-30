@@ -67,55 +67,24 @@ I have applied the distortion coefficients for the test_images
 
 The source code for test image undistortion is available at ./lanefinding/undistorted_test_images.py
 
-Below are the images showing undistortion for test images
-![straight_lines1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/staright_lines1.png)
-![straight_lines2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/staright_lines2.png)
-![test1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test1.png)
-![test2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test2.png)
-![test3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test3.png)
-![test4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test4.png)
-![test5](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test5.png)
-![test6](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_undistorted/test6.png)
-
-
 #### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
-I have used below coordinates as source and destination points
+I have used below coordinates as source and destination points as suggested in the review
 
 ```
-src_points = np.float32([[490, 482], [810, 482], [1250, 720], [40, 720]])
-dest_points = np.float32([[0, 0], [1280, 0], [1250, 720], [40, 720]])
+src = np.float32([[545, 460], [735, 460], [1280, 700], [0, 700]])
+    dst = np.float32([[0, 0], [1280, 0], [1280, 720], [0, 720]])
 ```
 
 I would improve the code later to derive points programatically
 
 The code is available in ./lanefinding/birds_eye_view.py
 
-Below are the images after applying perspective transform
-![straight_lines1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/straight_lines1.png)
-![straight_lines2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/straight_lines2.png)
-![test1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test1.png)
-![test2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test2.png)
-![test3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test3.png)
-![test4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test4.png)
-![test5](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test5.png)
-![test6](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/birds_eye_view_with_original/test6.png)
-
-
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
 
 I have used sobel thresholding
-I have used S color space in HLS color space. s_thresh_min = 170 and s_thresh_max = 255 as threshold values in S color space
+I have used L and S color space in HLS color space. 50 and 255 as min and max threshold values in both L and S color space
+I have used white and yellow ranges from RGB color space as suggested in review
 Combined the above images finding the pixels which are non zero
-Below are images showing different stages of binary threshold image creation
-
-![straight_lines1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/straight_lines1.png)
-![straight_lines2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/straight_lines2.png)
-![test1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test1.png)
-![test2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test2.png)
-![test3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test3.png)
-![test4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test4.png)
-![test5](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test5.png)
-![test6](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/threshold_images_original/test6.png)
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 I have used the binary image created above to find the line pixels
@@ -133,12 +102,18 @@ To find the distance from center of the lanes I have chosen the lowest points in
     ```
 If the distance from centre is negative then the car is left to centre and if positive the the car is right to lane
 
-Below are positions in test images
+All of above code is combined and used to work on video in ../lanefinding/lane_finding_1.py
 
-![fig1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_1.png)
-![fig2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_2.png)
-![fig3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_3.png)
-![fig4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/test_images_final/Figure_4.png)
+Below are the images which shows the function of pipeline on any given image
+![Figure1](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_1.png)
+![Figure2](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_2.png)
+![Figure3](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_3.png)
+![Figure4](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_4.png)
+![Figure5](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_5.png)
+![Figure6](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_6.png)
+![Figure7](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_7.png)
+![Figure8](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/combined_output/Figure_8.png)
+
 
 Here is the link to [project video](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/output_videos/project_video_ouput.mp4)
 

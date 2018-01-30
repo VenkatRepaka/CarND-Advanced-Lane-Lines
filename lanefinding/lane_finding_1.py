@@ -268,8 +268,6 @@ def draw_lane(original_img, binary_img, l_fit, r_fit, Minv):
 
     # Draw the lane onto the warped blank image
     cv2.fillPoly(color_warp, np.int_([pts]), (0, 255, 0))
-    # cv2.polylines(color_warp, np.int32([pts_left]), isClosed=False, color=(255, 0, 255), thickness=15)
-    # cv2.polylines(color_warp, np.int32([pts_right]), isClosed=False, color=(0, 255, 255), thickness=15)
 
     # Warp the blank back to original image space using inverse perspective matrix (Minv)
     newwarp = cv2.warpPerspective(color_warp, Minv, (w, h))
@@ -381,15 +379,15 @@ dist = undistort_mtx_dist["dist"]
 # image = mpimg.imread('../test_images/test5.jpg')
 # pipeline_show_images(image)
 
-import glob
-
-images = glob.glob("../test_images/*.jpg")
-for image in images:
-    img = mpimg.imread(image)
-    pipeline_show_images(img)
-
-# video_output = '../output_videos/project_video.mp4'
-# clip1 = VideoFileClip("../project_video.mp4")
+# import glob
 #
-# white_clip = clip1.fl_image(pipeline)
-# white_clip.write_videofile(video_output, audio=False)
+# images = glob.glob("../test_images/*.jpg")
+# for image in images:
+#     img = mpimg.imread(image)
+#     pipeline_show_images(img)
+
+video_output = '../output_videos/project_video.mp4'
+clip1 = VideoFileClip("../project_video.mp4")
+
+white_clip = clip1.fl_image(pipeline)
+white_clip.write_videofile(video_output, audio=False)
