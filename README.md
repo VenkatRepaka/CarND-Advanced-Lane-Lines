@@ -117,7 +117,7 @@ Below are the images which shows the function of pipeline on any given image
 
 Here is the link to [project video](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/output_videos/project_video.mp4)
 
-The code used in the project is at [lane_finding_video_pipeline.py](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/lanefinding/lane_finding_video_pipeline.py)
+The code used in the project is at [lane_finding_1.py](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/blob/master/lanefinding/lane_finding_1.py)
 
 To start with I have created smaller python files with minimal functionality and all the files are [here](https://github.com/VenkatRepaka/CarND-Advanced-Lane-Lines/tree/master/lanefinding)
 
