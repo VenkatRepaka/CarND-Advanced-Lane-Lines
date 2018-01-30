@@ -147,8 +147,10 @@ pts = np.hstack((pts_left, pts_right))
 # Draw the lane onto the warped blank image
 cv2.fillPoly(color_warp, np.int_([pts]), (0, 255, 0))
 
-src = np.float32([[490, 482], [810, 482], [1250, 720], [40, 720]])
-dst = np.float32([[0, 0], [1280, 0], [1250, 720], [40, 720]])
+# src = np.float32([[490, 482], [810, 482], [1250, 720], [40, 720]])
+# dst = np.float32([[0, 0], [1280, 0], [1250, 720], [40, 720]])
+src = np.float32([[545, 460], [735, 460], [1280, 700], [0, 700]])
+dst = np.float32([[0, 0], [1280, 0], [1280, 720], [0, 720]])
 Minv = cv2.getPerspectiveTransform(dst, src)
 
 # Warp the blank back to original image space using inverse perspective matrix (Minv)

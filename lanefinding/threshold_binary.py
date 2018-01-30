@@ -56,6 +56,32 @@ def dir_threshold(image, sobel_kernel=3, thresh=(0, np.pi/2)):
     return dirbinary
 
 
+def select_yellow(image):
+    hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+    lower = np.array([20, 60, 60])
+    upper = np.array([38, 174, 250])
+    mask = cv2.inRange(hsv, lower, upper)
+    return mask
+
+
+def select_white(image):
+    hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+    # lower = np.array([202, 202, 202])
+    # upper = np.array([255, 255, 255])
+    lower = np.array([20, 0, 180])
+    upper = np.array([255, 80, 255])
+    mask = cv2.inRange(hsv, lower, upper)
+    return mask
+
+
+def comb_thresh(image):
+    yellow = select_yellow(image)
+    white = select_white(image)
+    combined_binary = np.zeros_like(yellow)
+    combined_binary[(yellow >= 1) | (white >= 1)] = 1
+    return combined_binary
+
+
 def pipeline(image, img):
     ksize = 7
     # Convert to HLS color space and separate the S channel
@@ -107,7 +133,13 @@ def pipeline(image, img):
     # Combine the two binary thresholds
     combined_binary = np.zeros_like(s_binary)
     # combined_binary[(s_binary == 1) | (combined == 1)] = 1
-    combined_binary[(s_binary == 1) | (combined == 1)] = 1
+    # combined_binary[(s_binary == 1) | (combined == 1)] = 1
+
+    wny_threshold = comb_thresh(img)
+    # plt.imshow(wny_threshold)
+    # plt.waitforbuttonpress()
+
+    combined_binary[(wny_threshold == 1) | (combined == 1)] = 1
 
     f, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(24, 9))
     f.tight_layout()

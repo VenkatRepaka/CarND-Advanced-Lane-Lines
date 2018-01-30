@@ -8,9 +8,11 @@ import glob
 def birds_eye_view(img, image):
     rows, cols, depth = img.shape
     h, w = img.shape[:2]
-    src = np.float32([[490, 482], [810, 482], [1250, 720], [40, 720]])
+    # src = np.float32([[490, 482], [810, 482], [1250, 720], [40, 720]])
     # src = np.float32([[530, 470], [760, 470], [1250, 720], [40, 720]])
-    dst = np.float32([[0, 0], [1280, 0], [1250, 720], [40, 720]])
+    # dst = np.float32([[0, 0], [1280, 0], [1250, 720], [40, 720]])
+    src = np.float32([[545, 460], [735, 460], [1280, 700], [0, 700]])
+    dst = np.float32([[0, 0], [1280, 0], [1280, 720], [0, 720]])
 
     M = cv2.getPerspectiveTransform(src, dst)
     warped = cv2.warpPerspective(img, M, (cols, rows), flags=cv2.INTER_LINEAR)
